@@ -1,0 +1,19 @@
+-- crear un tabla
+CREATE TABLE student(
+  student_id INT,
+  name VARCHAR(20),
+  major VARCHAR(20),
+  PRIMARY KEY(student_id)
+);
+-- insertar los valores y va de acuerdo al orden de las varoavles
+INSERT INTO student VALUES (1, 'Jack', 'Biology');
+INSERT INTO student VALUES (2, 'Juan', 'Sociology');
+
+-- Si no sabemos el valor de alguna categoria dle individuo entonces
+-- llenamos valor solo para la variable NULL
+INSERT INTO student(student_id, name) VALUES (3, 'Kate');
+-- La primary key no se puede repetir
+INSERT INTO student(student_id, name) VALUES (4, 'Kate');
+
+-- Da toda la información de la tabla student
+SELECT* FROM student;
