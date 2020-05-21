@@ -1,0 +1,46 @@
+----------------------- CONSTRAINTS ------------------------
+-- si agregamos not null despues de una variable el programa entiende que 
+-- no debe ir vacía la casilla
+-- unique hace que el vaolor no se vuelva a repetir en la fila
+
+CREATE TABLE student(
+  student_id INT,
+  name VARCHAR(20) NOT NULL,
+  major VARCHAR(20)UNIQUE,
+  PRIMARY KEY(student_id)
+);
+
+INSERT INTO student VALUES (1, 'Jack', 'Biology');
+INSERT INTO student VALUES (2, 'Kate', 'Sociology');
+INSERT INTO student VALUES (3, NULL, 'Chemestry'); -- arrojará error porque especificamo ser null
+INSERT INTO student VALUES (4, 'Jack', 'Biology'); -- error porque tiene quer unico
+INSERT INTO student VALUES (5, 'Mike', 'Computer Sience');
+
+-- para dar un valor por default si no es llenado entonces usamos default
+CREATE TABLE student(
+  student_id INT,
+  name VARCHAR(20) NOT NULL,
+  major VARCHAR(20) DEFAULT 'Undiceded',
+  PRIMARY KEY(student_id)
+);
+
+INSERT INTO student VALUES (1, 'Jack', 'Biology');
+INSERT INTO student VALUES (2, 'Kate', 'Sociology');
+INSERT INTO student(student_id, name) VALUES (3, 'Clarie'); 
+INSERT INTO student VALUES (4, 'Jack', 'Valores'); 
+INSERT INTO student VALUES (5, 'Mike', 'Computer Sience');
+
+-- AUTO_INCREMET es usado regularmenet para primary key
+-- donde se autorellaena el valor de uno en uno
+CREATE TABLE student(
+  student_id INT AUTOINCREMENT,
+  name VARCHAR(20) NOT NULL,
+  major VARCHAR(20) DEFAULT 'Undiceded',
+  PRIMARY KEY(student_id)
+  
+INSERT INTO student (name, major) VALUES ( 'Jack', 'Biology');
+INSERT INTO student (name, major)VALUES ( 'Kate', 'Sociology');
+INSERT INTO student(name) VALUES ('Clarie'); 
+INSERT INTO student (name, major)VALUES ('Jack', 'Valores'); 
+INSERT INTO student (name, major)VALUES ('Mike', 'Computer Sience');
+
