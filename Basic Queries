@@ -1,0 +1,87 @@
+CREATE TABLE student(
+  student_id INT PRIMARY KEY,
+  name VARCHAR(20),
+  major VARCHAR(20)
+);
+INSERT INTO student VALUES (1, 'Jack', 'Biology');
+INSERT INTO student VALUES (2, 'Kate', 'Sociology');
+INSERT INTO student VALUES (3, 'Clarie', 'Chemestry'); 
+INSERT INTO student VALUES (4, 'Jack', 'Biology'); 
+INSERT INTO student VALUES (5, 'Mike', 'Computer Sience');
+
+---------------- Basic Queries---------------
+SELECT* FROM student;
+
+--- extraer cierta parte de la tablad
+-- SELECT es una llave especial para seleccionar 
+
+-- columna especifica
+SELECT student_id FROM student;
+
+-- columna especifica e incluso dos variables 
+SELECT student_id, name FROM student;
+-- mas especifico
+SELECT student.student_id, student.name FROM student;
+
+-- ordenarla informacion por nombre en orden alfabetico
+SELECT student.name, student.major 
+FROM student
+order by name;
+
+-- DESC or ASC depdente como los desultados de los nombres
+-- saldran exactamante al reves dependiendo lo que se necesite
+SELECT student.name, student.major 
+FROM student
+order by name DESC;
+
+-- aqui no regresa el valor de student_id pero si regresa el valor
+-- de las otras dos variables de acuerdo con el orden de studestudent_id 
+SELECT student.name, student.major 
+FROM student
+order by student_id DESC;
+
+-- cuando se visualiza toda la tabla usamos *
+SELECT *
+FROM student
+order by student_id DESC;
+
+-- cuando se visualiza toda la tabla usamos *
+-- SI SE TIENE variables con los mismo valores se pueden asignar distintos ordenes
+SELECT *
+FROM student
+order by major,student_id DESC;
+
+-- limite de observaciones que muestra
+SELECT *
+FROM student
+LIMIT 2;
+
+-- incluso se pueden usar tantas restricciones como 
+-- sean posibles
+SELECT *
+FROM student
+ORDER BY name DESC
+LIMIT 2;
+
+-- Para filtrar se usa la restriccion where 
+
+SELECT *
+FROM student
+WHERE major='Chemestry';
+
+-- se pueden hacer tantas combinaciones sean necesarias 
+SELECT name, major
+FROM student
+WHERE major='Chemestry' or major= 'Biology';
+
+-- <> indicativo logico de diferente de 
+
+SELECT *
+FROM student
+WHERE major <>'Chemestry';
+
+-- SELECCIONA TODO LO DE LA BLA DONDE EL NOMBRE ES 
+-- 'Clarie', 'Kate', 'Mike' i.e concatena los valores
+SELECT *
+FROM student
+WHERE name IN ('Clarie', 'Kate', 'Mike');
